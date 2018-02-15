@@ -6,17 +6,12 @@ import {
   View,
   TouchableOpacity,
   Image,
-  AsyncStorage
+  AsyncStorage,
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
-import Clarifai from 'clarifai';
-
 import styles from '../styles/styles.js';
 
-const app = new Clarifai.App({
- apiKey: 'f69ac9a49ddb4371914ebd0478fad6cd'
-});
 
 export default class Welcome extends Component <{}> {
      static navigationOptions = {

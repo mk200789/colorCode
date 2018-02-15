@@ -10,21 +10,28 @@ var width = Dimensions.get('window').width;
 module.exports = StyleSheet.create({
 	container:{
 		backgroundColor: 'white',
-		justifyContent: 'center',
+		paddingTop: 20,
 		alignItems: 'center',
 		flex: 1,
 	},
-	imageView: {
-		backgroundColor: '#8ab5ee',
-		height: height/2,
+	imageContainer: {
+		flex: 1,
+		// backgroundColor: '#8ab5ee',
+		height: height/3,
 		width: width-50,
 		marginBottom: 20,
 	},
+	imageView: {
+		flex:1,
+		width:null,
+		height: null,
+		justifyContent: 'center',
+	},
 	image:{
-		flex: 1,
+		flexGrow: 1,
 	     width: null,
 	     height: null,
-	     resizeMode: 'contain'
+	     resizeMode: 'contain',
 	},
 	uploadButton: {
 		backgroundColor: '#8ab5ee',
@@ -37,5 +44,16 @@ module.exports = StyleSheet.create({
 	},
 	uploadButtonText:{
 		fontSize: 20,
+		fontFamily: 'avenir',
+	},
+	scrollSection:{
+		marginTop: 30,
+		marginBottom: 20,
+	},
+	loader: {
+		position: 'absolute',
+		right: 0,
+		left: 0,
+		alignItems: 'center',
 	}
 });
