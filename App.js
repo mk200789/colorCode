@@ -11,6 +11,7 @@ import Welcome from './src/screens/welcomeScreen.js'
 import HomeScreen from './src/screens/homeScreen.js'
 import CaptureScreen from './src/screens/captureScreen.js';
 import FavoriteScreen from './src/screens/favoriteScreen.js';
+import ColorDetailScreen from './src/screens/favoriteScreen.js';
 
 export const tabnav = TabNavigator({
      capture: {
@@ -45,12 +46,19 @@ export const ColorCode = StackNavigator({
      welcome: {screen: Welcome},
      main: {screen: tabnav},
      home: {screen: HomeScreen},
+     colorDetail: {
+          screen: ColorDetailScreen,
+          path: '/capture/detail',
+          navigationOptions: ({ navigation }) => ({
+               title: `${navigation.state.params.colorName}`,
+          }),
+     },
 })
 
 export default class App extends Component<{}> {
      render() {
           return (
-               <ColorCode screenProps={this.props}/>
+               <ColorCode />
           );
      }
 }

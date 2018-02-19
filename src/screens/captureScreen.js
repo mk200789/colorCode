@@ -26,7 +26,7 @@ process.nextTick = setImmediate
 var width = Dimensions.get('window').width;
 const CLARIFAI_COLOR_MODEL = "eeed0b6733a644cea07cf4c60f87ebb7";
 const CLARIFAI_COLORCODE = new Clarifai.App({
- apiKey: 'PLACE_API_KEY'
+ apiKey: 'f69ac9a49ddb4371914ebd0478fad6cd'
 });
 
 
@@ -99,6 +99,14 @@ export default class CaptureScreen extends Component<{}>{
           this.setState({clarifaiColorData: null, colorLoaded: false, image: null});
      }
 
+     goToColorDetail = (color, name) =>{
+          /*
+           * Navigates to the color detail screen, passing color detail and the name of the color.
+           */
+          const {navigate} = this.props.navigation;
+          navigate('colorDetail', {color: color, colorName: name});
+     }
+
      populateColorSection = () => {
           /*
            * Generate the color section.
@@ -107,7 +115,7 @@ export default class CaptureScreen extends Component<{}>{
           if (this.state.clarifaiColorData && this.state.colorLoaded){
                const colors = this.state.clarifaiColorData.colors.map((color, idx)=>{
                     return (
-                         <TouchableOpacity key={idx} onPress={()=>null} style={{backgroundColor: `${color.raw_hex}`, alignItems: 'center',padding: 10, marginTop: 5, marginBottom: 5, borderRadius: 10, width: width-50}}>
+                         <TouchableOpacity key={idx} onPress={()=>this.goToColorDetail(color, color.w3c.name)} style={{backgroundColor: `${color.raw_hex}`, alignItems: 'center',padding: 10, marginTop: 5, marginBottom: 5, borderRadius: 10, width: width-50}}>
                               <Text style={{color:'white', fontWeight: 'bold'}}>{color.w3c.name}</Text>
                               <Text style={{color:'white'}}>{color.raw_hex}</Text>
                          </TouchableOpacity>
