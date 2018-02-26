@@ -14,6 +14,7 @@ import ImagePicker from 'react-native-image-picker';
 import RNFetchBlob from 'react-native-fetch-blob';
 import Clarifai from 'clarifai';
 
+
 import styles from '../styles/captureStyles';
 
 const Blob = RNFetchBlob.polyfill.Blob
@@ -115,9 +116,9 @@ export default class CaptureScreen extends Component<{}>{
           if (this.state.clarifaiColorData && this.state.colorLoaded){
                const colors = this.state.clarifaiColorData.colors.map((color, idx)=>{
                     return (
-                         <TouchableOpacity key={idx} onPress={()=>this.goToColorDetail(color, color.w3c.name)} style={{backgroundColor: `${color.raw_hex}`, alignItems: 'center',padding: 10, marginTop: 5, marginBottom: 5, borderRadius: 10, width: width-50}}>
+                         <TouchableOpacity key={idx} onPress={()=>this.goToColorDetail(color, color.w3c.name)} style={{backgroundColor: `${color.w3c.hex}`, alignItems: 'center',padding: 10, marginTop: 5, marginBottom: 5, borderRadius: 10, width: width-50}}>
                               <Text style={{color:'white', fontWeight: 'bold'}}>{color.w3c.name}</Text>
-                              <Text style={{color:'white'}}>{color.raw_hex}</Text>
+                              <Text style={{color:'white'}}>{color.w3c.hex}</Text>
                          </TouchableOpacity>
                     )
                });
